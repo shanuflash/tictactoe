@@ -5,17 +5,8 @@ import "./App.css";
 function App() {
   const [Winner, setWinner] = useState(null);
   const [Turn, setTurn] = useState("X");
-  const [Board, setBoard] = useState([
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-  ]);
+  const [Board, setBoard] = useState(Array(9).fill(null));
+
   const condition = [
     [0, 1, 2],
     [3, 4, 5],
@@ -26,21 +17,30 @@ function App() {
     [0, 4, 8],
     [2, 4, 6],
   ];
+
   const handleWinner = () => {
-    {
-      condition.map((subArr) => {
-        let [a, b, c] = subArr;
-        if (
-          Board[a] === Board[b] &&
-          Board[b] === Board[c] &&
-          Board[a] === Board[c] &&
-          Board[a] !== null
-        ) {
-          setWinner(Board[a]);
-        }
-      });
+    condition.map((subArr) => {
+      let [a, b, c] = subArr;
+      if (
+        Board[a] === Board[b] &&
+        Board[b] === Board[c] &&
+        Board[a] === Board[c] &&
+        Board[a] !== null
+      ) {
+        setWinner(Board[a]);
+      }
+    });
+    if (!Board.some((element) => element === null)) {
+      setWinner("DRAW");
     }
   };
+
+  const handleReset = () => {
+    setBoard(Array(9).fill(null));
+    setTurn("X");
+    setWinner(null);
+  };
+
   useEffect(() => {
     handleWinner();
   }, [Board]);
@@ -48,7 +48,10 @@ function App() {
   return (
     <div className="App">
       <div className="container">
-        <div className="title">Tic-Tac-Toe</div>
+        <div className="head">
+          <div className="title">Tic Tac Toe</div>
+          <div className="desc">{Turn}'s Turn</div>
+        </div>
         <div className="board">
           <div className="row 1">
             <Tile {...{ Board, setBoard, Turn, setTurn, Winner }} index={0} />
@@ -66,7 +69,18 @@ function App() {
             <Tile {...{ Board, setBoard, Turn, setTurn, Winner }} index={8} />
           </div>
         </div>
-        <div className="result">{Winner}</div>
+        <div className="result-container">
+          {Winner === "DRAW" ? (
+            <div className="result">It's a {Winner}!</div>
+          ) : (
+            Winner !== null && (
+              <div className="result">{Winner} is the winner!</div>
+            )
+          )}
+          <button className="reset" onClick={handleReset}>
+            {Winner === null ? "Reset" : "New Game"}
+          </button>
+        </div>
       </div>
     </div>
   );

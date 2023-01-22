@@ -21,7 +21,12 @@ function Tile({ Board, setBoard, Turn, setTurn, Winner, index }) {
     }
   };
   return (
-    <div className="box" onClick={() => handleClick()}>
+    <div
+      className={`box ${
+        Board[index] === "X" ? "x" : Board[index] === "O" && "o"
+      }`}
+      onClick={() => handleClick()}
+    >
       {Board[index]}
     </div>
   );
