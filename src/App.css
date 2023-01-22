@@ -1,0 +1,18 @@
+.board {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+.box {
+  height: 3rem;
+  width: 3rem;
+  background-color: crimson;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
