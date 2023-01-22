@@ -95,3 +95,43 @@
   padding: 0.5rem 2rem 0.5rem 2rem;
   border-radius: 2rem;
 }
+
+@media screen and (max-width: 768px) {
+  .title {
+    font-size: 7.5vw;
+  }
+  .desc {
+    font-size: 4vw;
+  }
+  .box {
+    height: 23vw;
+    width: 23vw;
+    font-size: 7vw;
+  }
+  .result {
+    font-size: 4vw;
+  }
+  .reset {
+    font-size: 4vw;
+  }
+}
+
+@media screen and (max-width: 768px) and (min-width: 540px) {
+  .title {
+    font-size: 7.5vw;
+  }
+  .desc {
+    font-size: 4vw;
+  }
+  .box {
+    height: 14vw;
+    width: 14vw;
+    font-size: 7vw;
+  }
+  .result {
+    font-size: 4vw;
+  }
+  .reset {
+    font-size: 4vw;
+  }
+}
