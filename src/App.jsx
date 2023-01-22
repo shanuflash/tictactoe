@@ -51,19 +51,19 @@ function App() {
         <div className="title">Tic-Tac-Toe</div>
         <div className="board">
           <div className="row 1">
-            <Tile {...{ setBoard, Board, Turn, setTurn }} index={0} />
-            <Tile {...{ setBoard, Board, Turn, setTurn }} index={1} />
-            <Tile {...{ setBoard, Board, Turn, setTurn }} index={2} />
+            <Tile {...{ Board, setBoard, Turn, setTurn, Winner }} index={0} />
+            <Tile {...{ Board, setBoard, Turn, setTurn, Winner }} index={1} />
+            <Tile {...{ Board, setBoard, Turn, setTurn, Winner }} index={2} />
           </div>
           <div className="row 2">
-            <Tile {...{ setBoard, Board, Turn, setTurn }} index={3} />
-            <Tile {...{ setBoard, Board, Turn, setTurn }} index={4} />
-            <Tile {...{ setBoard, Board, Turn, setTurn }} index={5} />
+            <Tile {...{ Board, setBoard, Turn, setTurn, Winner }} index={3} />
+            <Tile {...{ Board, setBoard, Turn, setTurn, Winner }} index={4} />
+            <Tile {...{ Board, setBoard, Turn, setTurn, Winner }} index={5} />
           </div>
           <div className="row 3">
-            <Tile {...{ setBoard, Board, Turn, setTurn }} index={6} />
-            <Tile {...{ setBoard, Board, Turn, setTurn }} index={7} />
-            <Tile {...{ setBoard, Board, Turn, setTurn }} index={8} />
+            <Tile {...{ Board, setBoard, Turn, setTurn, Winner }} index={6} />
+            <Tile {...{ Board, setBoard, Turn, setTurn, Winner }} index={7} />
+            <Tile {...{ Board, setBoard, Turn, setTurn, Winner }} index={8} />
           </div>
         </div>
         <div className="result">{Winner}</div>
