@@ -5,28 +5,18 @@ function Tile({ Board, setBoard, Turn, setTurn, Winner, index }) {
   const handleClick = () => {
     if (!Winner) {
       const nextBoard = Board.map((c, i) => {
-        if (i === index && c === null) {
-          if (Turn === "X") {
-            setTurn("O");
-            return "X";
-          } else {
-            setTurn("X");
-            return "O";
-          }
+        if (i === index) {
+          return Turn;
         } else {
           return c;
         }
       });
       setBoard(nextBoard);
+      setTurn(Turn === "X" ? "O" : "X");
     }
   };
   return (
-    <div
-      className={`box ${
-        Board[index] === "X" ? "x" : Board[index] === "O" && "o"
-      }`}
-      onClick={() => handleClick()}
-    >
+    <div className={`box ${Board[index]}`} onClick={() => handleClick()}>
       {Board[index]}
     </div>
   );

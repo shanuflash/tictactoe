@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Tile from "./components/Tile";
+import Confetti from "react-confetti";
 import "./App.css";
 
 function App() {
@@ -31,7 +32,7 @@ function App() {
       }
     });
     if (!Board.some((element) => element === null)) {
-      setWinner("DRAW");
+      if (!Winner) setWinner("DRAW");
     }
   };
 
@@ -53,17 +54,17 @@ function App() {
           <div className="desc">{Turn}'s Turn</div>
         </div>
         <div className="board">
-          <div className="row 1">
+          <div className="row">
             <Tile {...{ Board, setBoard, Turn, setTurn, Winner }} index={0} />
             <Tile {...{ Board, setBoard, Turn, setTurn, Winner }} index={1} />
             <Tile {...{ Board, setBoard, Turn, setTurn, Winner }} index={2} />
           </div>
-          <div className="row 2">
+          <div className="row">
             <Tile {...{ Board, setBoard, Turn, setTurn, Winner }} index={3} />
             <Tile {...{ Board, setBoard, Turn, setTurn, Winner }} index={4} />
             <Tile {...{ Board, setBoard, Turn, setTurn, Winner }} index={5} />
           </div>
-          <div className="row 3">
+          <div className="row">
             <Tile {...{ Board, setBoard, Turn, setTurn, Winner }} index={6} />
             <Tile {...{ Board, setBoard, Turn, setTurn, Winner }} index={7} />
             <Tile {...{ Board, setBoard, Turn, setTurn, Winner }} index={8} />
@@ -74,7 +75,10 @@ function App() {
             <div className="result">It's a {Winner}!</div>
           ) : (
             Winner !== null && (
-              <div className="result">{Winner} is the winner!</div>
+              <div className="result">
+                {Winner} is the winner!
+                <Confetti width={window.innerWidth} height={window.innerHeight} />
+              </div>
             )
           )}
           <button className="reset" onClick={handleReset}>
