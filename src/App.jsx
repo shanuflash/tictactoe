@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Tile from "./components/Tile";
 import "./App.css";
 
@@ -45,11 +45,29 @@ function App() {
     handleWinner();
   }, [Board]);
 
+  const blobRef = useRef(null);
+
+  window.onpointermove = (event) => {
+    const { clientX, clientY } = event;
+    blobRef.current.animate(
+      {
+        left: `${clientX}px`,
+        top: `${clientY}px`,
+      },
+      { duration: 3000, fill: "forwards" }
+    );
+    // blobRef.current.style.left = `${clientX}px`;
+    // blobRef.current.style.top = `${clientY}px`;
+  };
+
   return (
     <div className="App">
+      <div ref={blobRef} id="blob"></div>
       <div className="container">
         <div className="head">
-          <div className="title">Tic Tac Toe</div>
+          <div className="title" onClick={() => test("title")}>
+            Tic Tac Toe
+          </div>
           <div className="desc">{Turn}'s Turn</div>
         </div>
         <div className="board">
